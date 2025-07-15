@@ -1,47 +1,58 @@
-class Node {
-    constructor(data) {
+class Node<T> {
+    public data: T;
+    public prev: Node<T> | null;
+
+    constructor(data: T) {
         this.data = data;
         this.prev = null;
     }
 }
 
-class Stack {
+class Stack<T> {
+    private head: Node<T> | null;
+    private length: number;
+
     constructor() {
         this.head = null;
         this.length = 0;
     }
-    push(data) {
+    push(data: T): number {
         const newNode = new Node(data);
         this.length++;
-        if(!this.head) {
+
+        if (!this.head) {
             this.head = newNode;
             return this.length;
         }
 
         newNode.prev = this.head;
         this.head = newNode;
-        
+
         return this.length;
     }
-    pop() {
-        if(!this.head) return null;
-        this.length--
+    pop(): T | null {
+        if (!this.head) {
+            return null;
+        }
 
+        this.length--;
         const data = this.head.data;
         this.head = this.head.prev;
 
         return data;
     }
-    peek() {
-        if(!this.head) return null;
+    peek(): T | null {
+        if (!this.head) {
+            return null;
+        }
         return this.head.data;
     }
-    isEmpty() {
+    isEmpty(): boolean {
         return this.length === 0;
     }
-
-    size() {
+    size(): number {
         return this.length;
     }
 }
 
+export default Stack;

@@ -1,5 +1,5 @@
-const binarySearch = (list, item) => {
-    const search = (start, end) => {
+const binarySearch = (list: number[], item: number) => {
+    const search = (start: number, end: number) => {
         if(start > end) return -1;
 
         const mid = Math.floor((start + end) / 2);
@@ -16,4 +16,4 @@ const binarySearch = (list, item) => {
 
 }
 
-console.log(binarySearch([0,1,2,3,4,5,10,70], 70));
+export default binarySearch;
